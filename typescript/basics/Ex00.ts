@@ -3,3 +3,5 @@ let numberOne: number = 2
 
 console.log("Hello World!");
 console.log(user.name);
+
+export {}

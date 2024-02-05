@@ -129,6 +129,7 @@ type Combo = {
      size: "small" | "medium" | "large",
      icecream: "chocolate" | "strawberry" | "vanilla",
      promo: boolean 
+
 }
 
 let delivery: Combo[] = [
@@ -143,7 +144,80 @@ let delivery: Combo[] = [
           promo: true,
      }
 ]
+// tuples = Selecting the exact type for each position in a array
+const userX: [string, number] = ["h",2] 
 
+let rgb: [number,number,number] = [2,3,4]
+
+type tUser = [number,string]
+
+const userZ: tUser = [1,"email"]
+
+userZ[1] = "ge.com"
+
+
+//enums
+const AISLE = 0 //WRONG WAY (without enums)
+const MIDDLE = 1
+const WINDOW = 2
+
+const enum SeatChoice {
+     AISLE = "AISLE",
+     MIDDLE = "MIDDLE",
+     WINDOW = "WINDOW"
+}
+
+const enum Gender {
+     MALE,
+     FEMALE
+}
+
+const enum Goal {
+     LOSE,
+     MAINTAIN,
+     GAIN,
+}
+
+const seat = SeatChoice.WINDOW
+
+const userW = {
+     gender: Gender.MALE,
+     goal: Goal.GAIN
+}
+
+// interfaces - Works similar as a type or a class
+interface UserW {
+     readonly dbId: number,
+     email: string, 
+     userId: number,
+     googleId?: number,
+     startTrail(): string,
+     resetUser(): void,
+     getCoupon(couponame: string, value: number): number
+}
+
+const hitesh: UserW = {
+     dbId: 1,
+     email: "g@gmail.com",
+     userId: 1122,
+     googleId: 122,
+     startTrail: () => {
+          return "Trail Started"
+     },
+     resetUser: () => {
+          hitesh.email = ""
+          hitesh.userId = 0
+          hitesh.googleId = 0
+     },
+     getCoupon: (name: "hitesh10", value) => {
+          return 10
+     }
+}
+
+interface Admin1 extends UserW { // extending to other interfaces
+     keypass: number,
+     role: "manager"| "CEO" | "Creative Director",
+}
 
 
 
