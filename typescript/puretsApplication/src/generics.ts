@@ -31,3 +31,19 @@ function IdentitySix<Type>(val: Type[]) : Type {
 const getSearchProducts = <Type>(val: Type[]): Type => { //Using generics with arrow functions
     return val[2]
 }
+
+interface Database {
+    connection: string,
+    username: string,
+    password: string,
+}
+
+function dualGenerics<T, U extends Database/**/>(valOne: T, valTwo: U):object {
+    return {valOne, valTwo}
+}
+
+dualGenerics(3, {
+    connection:"",
+    username:"",
+    password:"",    
+})

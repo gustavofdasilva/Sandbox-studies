@@ -5,6 +5,9 @@ class TakePhoto {
         this.filter = filter;
         this.burst = burst;
     }
+    getReelTime() {
+        return 2;
+    }
 }
 class Instagram extends TakePhoto {
     constructor(cameraMode, filter, burst, likes) {
@@ -19,3 +22,4 @@ class Instagram extends TakePhoto {
     }
 }
 const hc = new Instagram("Portrait", "B&W", 5, 10);
+hc.getReelTime;
