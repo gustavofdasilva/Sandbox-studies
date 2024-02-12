@@ -11,8 +11,7 @@ def divideNumbers():
         print("You can't divide these two numbers!")
     finally:
         print("closing...")
-    
-divideNumbers()
+
 
 def f(a,b):
     print(a,b)
