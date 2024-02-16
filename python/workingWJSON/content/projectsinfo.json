@@ -1,0 +1,206 @@
+[   
+    {
+        "title" : {
+            "ptbr": "Gym Tracker (Aplicativo)"
+        },
+
+        "desc" : {
+            "ptbr": "Meu projeto mais ambicioso e complexo, feito como trabalho de conclusão de curso na escola. É um aplicativo para monitorar treinos e dieta da academia, incentivando os usuários a terem uma vida mais saudável. Atualmente o repositório se encontra privado e o aplicativo está disponível para download apenas na playstore (Android)."
+        },
+
+        "status": "completed",
+        "img" : "../imgs/projects/gymtracker.jpg",
+        "link":"https://play.google.com/store/apps/details?id=com.gymtrackerapp.gymtracker"
+
+    },
+    {
+        "title" : {
+            "ptbr": "Lista de Receitas (Aplicativo)"
+        },
+
+        "desc" : {
+            "ptbr": "Projeto simples feito em React Native para praticar e aprender a utilizar APIs (que requer uma chave de acesso) em um aplicativo."
+        },
+
+        "status": "completed",
+        "img" : "../imgs/projects/listaDeReceitas.jpg",
+        "link":"https://github.com/gustavofdasilva/Projeto-ListaDeReceitas"
+
+    },
+    {
+            "title" : {
+
+                "ptbr": "Lista de tarefas"
+            },
+
+            "desc" : {
+
+                "ptbr": "Projeto feito para testar minhas habilidades com a interação com html e javascript adicionando dinamicamente elementos."
+            },
+
+            "status": "completed",
+            "img" : "../imgs/projects/todo-list.png",
+            "link":"https://gustavofdasilva.github.io/Projeto-lista-de-tarefas/"
+        
+    },
+    {
+        "title" : {
+
+            "ptbr": "Clima Tempo"
+        },
+
+        "desc" : {
+
+            "ptbr": "Projeto feito para entender de forma prática o funcionamento de consumir uma API gratuita e utilizar as informações na página."
+        },
+
+        "status": "completed",
+        "img" : "../imgs/projects/Weather.png",
+        "link":"https://gustavofdasilva.github.io/Projeto-ClimaTempoAPI/"
+    
+    },
+    {
+        "title" : {
+            "ptbr": "Aplicativo de Anotações"
+        },
+
+        "desc" : {
+            "ptbr": "Projeto rápido feitos em react native para testar e relembrar recursos que havia aprendido antes."
+        },
+
+        "status": "completed",
+        "img" : "../imgs/projects/noteapp.jpg",
+        "link":"https://github.com/gustavofdasilva/Projeto-notesApp-reactNative"
+
+    },
+    {
+        "title" : {
+            "ptbr": "Calculadora (Aplicativo)"
+        },
+
+        "desc" : {
+            "ptbr": "Projeto rápido feitos em react native para praticar a confecção de layouts em grid e adquirir valor dos inputs"
+        },
+
+        "status": "completed",
+        "img" : "../imgs/projects/calculatorapp.jpg",
+        "link":"https://github.com/gustavofdasilva/Projeto-calculadora-reactNative"
+
+    },
+    {
+        "title": {
+            "ptbr":"Cálculo do circuncentro"
+        },
+        "desc": {
+            "ptbr":"Projeto feito para um projeto de escola, não apliquei muito na página, o foco todo foi para o javascript."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/circ.png",
+        "link":"https://gustavofdasilva.github.io/Projeto-calculo-circuncentro/"
+    },
+
+    {
+        "title": {
+            "ptbr":"Tela de login"
+        },
+
+        "desc": {
+            "ptbr":"Projeto feito para testar as validações de formulário do html."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/login.png",
+        "link":"https://gustavofdasilva.github.io/Projeto-Login/"
+    },
+
+    {
+        "title": {
+            "ptbr": "Calculadora simples"
+        },
+        "desc": {
+            "ptbr": "Projeto feito para praticar o layout e interação do JS com html."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/calculator.png",
+        "link":"https://gustavofdasilva.github.io/Projeto-calculadora-js/"
+    },
+
+    {
+        "title": {
+            "ptbr": "Cordel"
+        },
+        "desc": {
+            "en":"Simple project made to test background image properties.", 
+            "ptbr": "Projeto simples feito para testar propriedades do background image."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/cordel.png",
+        "link":"https://gustavofdasilva.github.io/Projeto-Cordel/"
+    },
+
+    {
+        "title": {
+            "ptbr": "Contador"
+        },
+        "desc": {
+            "ptbr": "Projeto simples feito para testar a interação de JS com html."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/counter.png",
+        "link":"https://gustavofdasilva.github.io/JavaScript/Projetos/Modulo-E/EX/contador.html"
+    },
+
+    {
+        "title": {
+            "ptbr": "Analisador de números"
+        },
+        "desc": {
+            "ptbr": "Projeto simples feito para testar a interação de JS com html."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/analyzer.png",
+        "link":"https://gustavofdasilva.github.io/JavaScript/Projetos/Modulo-F/EX/analise.html"
+    },
+
+    {
+        "title": {
+            "ptbr": "Tabuada"
+        },
+        "desc": {
+            "ptbr": "Projeto simples feito para testar a interação de JS com html."
+        },
+        "status":"completed",
+        "img":"../imgs/projects/table.png",
+        "link":"https://gustavofdasilva.github.io/JavaScript/Projetos/Modulo-E/EX/tabuada.html"
+    },
+
+    {
+        "title" : {
+            "ptbr": "50 projects"
+        },
+
+        "desc" : {
+            "ptbr": "Projeto rápidos feitos para testar as possibilidades de modelos de sites."
+        },
+
+        "status": "inProgress",
+        "img" : "../imgs/projects/50days.png",
+        "link":"https://gustavofdasilva.github.io/Projeto-50projetos/"
+    
+},
+
+{
+        
+    "title": {
+        "ptbr": "Clone da Hulu"
+    },
+
+    "desc": {
+        "ptbr": "Projeto feito para praticar o CSS, interatividade com o usuário e minha habilidade para fazer sites baseado em um modelo já existente. (atualmente só fiz o porte para mobile)."
+    },
+
+    "status":"inProgress",
+    "img":"../imgs/projects/hulu.png",
+    "link":"https://gustavofdasilva.github.io/Projetos-diversos/copies/hulu/"
+    
+}   
+]
