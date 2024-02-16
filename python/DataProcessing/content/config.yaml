@@ -1,0 +1,12 @@
+doc1:
+  rest:
+    url: "https://example.org/primenumbers/v1"
+    port: 8443
+  prime_numbers: [2, 3, 5, 7, 11, 13, 17, 19]
+
+---
+doc2:
+  rest:
+    url: "https://example.org/primenumbers/v2"
+    port: 8445
+  prime_numbers: [13, 17, 19]

@@ -16,4 +16,6 @@ with open(f'{filePath}/projectsinfo2.json', 'w') as file:
 
 with open(f'{filePath}/projectsinfo.json','r') as file: 
     data = json.load(file)
-    print(jpath.search('[*].title.ptbr',data))
+    titles = list(jpath.search("[?status=='completed'].title.ptbr",data))
+    titles.sort()
+    print(titles)
