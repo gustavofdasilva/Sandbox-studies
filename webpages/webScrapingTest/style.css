@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background-color: rgb(36, 36, 36);
+}
+
+main {
+    background-color: aliceblue;
+    padding: 1em;
+    margin: 2em auto;
+    width: 80%;
+}
+
+div.asdfghjklç {
+    display: block;
+    margin: 2em 0;
+    background-color: blueviolet;
+    padding: 1em;
+    color: white;
+    border-radius: 1em;
+}
