@@ -1,6 +1,5 @@
 import puppeteer from "puppeteer";
 import jQuery from "jquery";
-import jsdom from 'jsdom'
 
 const getQuotes = async () => {
     //? Parametros que serão passados
@@ -10,7 +9,7 @@ const getQuotes = async () => {
     //?
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         defaultViewport: null,
     })
 
@@ -20,7 +19,7 @@ const getQuotes = async () => {
         waitUntil: "domcontentloaded",
     })
 
-    const pageIndex = 20
+    const pageIndex = 1
     
     let element = await page.waitForSelector('div.MuiBox-root.mui-10smzr0')
     for(let i = 0; i<pageIndex;i++) {
@@ -28,31 +27,46 @@ const getQuotes = async () => {
         await page.waitForNavigation()
         element = await page.waitForSelector('div.MuiBox-root.mui-10smzr0')
     }
-    
 
+    
     const pageData = await page.evaluate(()=>{
-        const pageIndex = 20
+        const pageIndex = 1
         const rentCardNodes = document.querySelectorAll('.bTndEd')
         const rentCardSelected = [...rentCardNodes].slice(pageIndex*12,(pageIndex*12)+12)
         const rentCardArr = [...rentCardSelected].map((e)=>{
             const imgs = [...e.querySelectorAll('img')].map((e)=>{
                 return ('https://www.quintoandar.com.br'+e.getAttribute('src')).replace('med','xxl')
             })
+            const title= e.firstChild.getAttribute('title')
+            const link = e.firstChild.getAttribute('href')
+            const rentPrice = {
+                    text: e.querySelector('.fLkTfH').innerText,
+                    rawText: (e.querySelector('.fLkTfH').innerText).replace(/\D+/g, '')
+                }
+            const totalPrice = {
+                text: e.querySelector('.gYqoUK').innerText,
+                rawText: (e.querySelector('.gYqoUK').innerText).replace(/\D+/g, '')
+            }
+            const basicInfo = e.querySelector('.hZkulO').innerText.split('·').map((element)=>{
+                return element.replace(/[^0-9]/g,'')
+            })
+            const basicInfoObject = {
+                size: basicInfo[0],
+                bedrooms: basicInfo[1],
+                parkingSpots: basicInfo[2]
+            }
+            const address = e.querySelector('h2.sc-dwVMhp.GWXqv').innerText
+            const type = e.querySelector('h2.sc-djUGQo.NfHTU').innerText
+
             return {
-                title: e.firstChild.getAttribute('title'),
-                // link: e.firstChild.getAttribute('href'),
-                // rentPrice: {
-                //     text: e.querySelector('.fLkTfH').innerText,
-                //     rawPrice: (e.querySelector('.fLkTfH').innerText).replace(/\D+/g, '')
-                // },
-                // totalPrice: {
-                //     text: e.querySelector('.gYqoUK').innerText,
-                //     rawPrice: (e.querySelector('.gYqoUK').innerText).replace(/\D+/g, '')
-                // },
-                // // address: e.querySelector('.hGkWsg').innerText,
-                // // type: e.querySelector('.jxBqSr').innerText,
-                // basicInfo: e.querySelector('.hZkulO').innerText, //! Fazer split no "·" para separa cada info
-                // imgs,
+                title,
+                link,
+                rentPrice,
+                totalPrice,
+                address,
+                type,
+                basicInfo: basicInfoObject,
+                imgs,
 
             }
         })
@@ -84,12 +98,9 @@ const getQuotes = async () => {
 
         return rentCardArr
     })
-
     console.log(pageData)
 
     await page.close()
-    
-
 }
 
 getQuotes();
