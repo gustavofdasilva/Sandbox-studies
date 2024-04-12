@@ -1,36 +1,21 @@
-import puppeteer from "puppeteer";
-import jQuery from "jquery";
+const{ puppeteer } = require('puppeteer')
+const {Cluster} = require('puppeteer-cluster')
 
 const getQuotes = async () => {
     //? Parametros que serão passados
-    // Carregar qual página? page index
-    const offset = 12 // quinto andar carrega de 12 em 12 anúncios
-
-    //?
-
-    const browser = await puppeteer.launch({
-        headless: true,
-        defaultViewport: null,
-    })
-
-    const page = await browser.newPage();
-
-    await page.goto('https://www.quintoandar.com.br/alugar/imovel/aclimacao-sao-paulo-sp-brasil?referrer=home&profiling=true', {
-        waitUntil: "domcontentloaded",
-    })
-
-    const pageIndex = 1
-    
-    let element = await page.waitForSelector('div.MuiBox-root.mui-10smzr0')
-    for(let i = 0; i<pageIndex;i++) {
-        await element.click()
-        await page.waitForNavigation()
-        element = await page.waitForSelector('div.MuiBox-root.mui-10smzr0')
-    }
-
-    
-    const pageData = await page.evaluate(()=>{
-        const pageIndex = 1
+    /*
+    * pageIndex: Number <- quantos imóveis carregar por requisição (Testado apenas no QuintoAndar)
+    * type: "rent" | "buy" <- Comprar ou Alugar imóveis
+    * place: { <- Local escolhido do imóvel (precisa estar separado pois a URL de cada site usa uma estrutura diferente)
+    *   UF: String
+    *   city: String
+    *   district: String
+    * } 
+    */
+   //?
+   
+    const quintoAndarScraping = () => {
+        const pageIndex = 0
         const rentCardNodes = document.querySelectorAll('.bTndEd')
         const rentCardSelected = [...rentCardNodes].slice(pageIndex*12,(pageIndex*12)+12)
         const rentCardArr = [...rentCardSelected].map((e)=>{
@@ -70,37 +55,52 @@ const getQuotes = async () => {
 
             }
         })
-        
+        return rentCardArr
+    }
 
-        
-        
-
-        /*const title = document.querySelector("h1").innerText
-        const address = document.querySelector('h4').innerText
-        const price = document.querySelector('.dpxvUv').innerText
-        const rentPrice = document.querySelector('.gzVfKD').innerText
-        const imagesNodeList = document.querySelectorAll('img')
-        const images = [...imagesNodeList].map((image)=>{
-            const path = image.getAttribute('src') ?? image.getAttribute('data-src')
-            return path
-        })
+    const zapimoveisScraping = () => {
+        const rentCardNodes = document.querySelectorAll('div.listing-wrapper__content>div')
+      
+      const rentCardArr = [...rentCardNodes].map(e => {
+        const address = e.querySelector('h2') ? e.querySelector('h2').innerText : null
         
         return {
-            title, 
-            address, 
-            price,
-            rentPrice,
-            images: images.map((img)=>{
-                if(img) {
-                    return img.replace("/img/","https://www.quintoandar.com.br/img/")
-                }
-            })}*/
+            address,
+        }
+      })
 
-        return rentCardArr
+      return document.querySelector('p').innerText
+    }
+
+    const cluster = await Cluster.launch({
+        concurrency: Cluster.CONCURRENCY_PAGE,
+        maxConcurrency: 4,
+        puppeteerOptions: {
+            headless: true
+        }
     })
-    console.log(pageData)
 
-    await page.close()
+    await cluster.task(async ({page, data: url})=>{
+        await page.goto(url);
+        let getData;
+        if(String(url).includes('quintoandar')) {
+            getData = quintoAndarScraping
+        }
+        
+        if(String(url).includes('zapimoveis')) {
+            getData = zapimoveisScraping
+        }
+
+        const pageData = await page.evaluate(getData)
+        console.log(pageData)
+    })
+
+    await cluster.queue('https://www.quintoandar.com.br/alugar/imovel/tucuruvi-sao-paulo-sp-brasil?referrer=home&profiling=true')
+    await cluster.queue('https://www.zapimoveis.com.br/aluguel/imoveis/sp+sao-paulo+zona-norte+tucuruvi/')
+    await cluster.queue('https://www.youtube.com')
+
+    await cluster.idle()
+    await cluster.close()
 }
 
 getQuotes();
