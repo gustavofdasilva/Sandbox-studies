@@ -23,8 +23,10 @@ export class DetailsComponent {
   housingLocation: HousingLocation | undefined;
   housingService = inject(HousingService);
   constructor() {
-    const housingLocationId = Number(this.route.snapshot.params['id'])
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
+    const housingLocationId = parseInt(this.route.snapshot.params['id'],10)
+    this.housingService.getHousingLocationById(housingLocationId).then((result:HousingLocation | undefined) => {
+      this.housingLocation = result
+    })
   }
 
   submitApplication() {
