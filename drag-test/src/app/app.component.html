@@ -1,0 +1,5 @@
+<main>
+  <h1>Hello World, {{title}}</h1>
+  <app-note *ngFor="let item of notes" [note]="item"></app-note>
+  <button (click)="newNote()">New Note</button>
+</main>
